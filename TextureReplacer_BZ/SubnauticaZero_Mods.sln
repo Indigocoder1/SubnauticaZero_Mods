@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextureReplacer_BZ", "TextureReplacer_BZ\TextureReplacer_BZ.csproj", "{45012CF9-D7AD-4036-8288-6C4489A7203F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45012CF9-D7AD-4036-8288-6C4489A7203F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45012CF9-D7AD-4036-8288-6C4489A7203F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45012CF9-D7AD-4036-8288-6C4489A7203F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45012CF9-D7AD-4036-8288-6C4489A7203F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8DEBB6A-AB27-44E2-A999-067C5D6B2721}
+	EndGlobalSection
+EndGlobal
