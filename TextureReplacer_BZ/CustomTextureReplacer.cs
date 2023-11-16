@@ -16,6 +16,7 @@ namespace TextureReplacer
 
         public static void Initialize()
         {
+            CraftData.PreparePrefabIDCache();
             textureConfigs = SaveManager<Main.TexturePatchConfigData>.LoadJsons(folderFilePath);
             if (textureConfigs == null)
             {
@@ -50,14 +51,13 @@ namespace TextureReplacer
                     continue;
                 }
 
-                CoroutineHost.StartCoroutine(InitializeTexture(configData.prefabClassID, configData.rendererHierarchyPath, configData));
+                CoroutineHost.StartCoroutine(InitializeTexture(configData));
             }
         }
 
-        private static IEnumerator InitializeTexture(string classID,
-            string hierarchyPath, TexturePatchConfigData configData)
+        private static IEnumerator InitializeTexture(TexturePatchConfigData configData)
         {
-            IPrefabRequest request = PrefabDatabase.GetPrefabAsync(classID);
+            IPrefabRequest request = PrefabDatabase.GetPrefabAsync(configData.prefabClassID);
 
             yield return request;
 
@@ -66,10 +66,10 @@ namespace TextureReplacer
                 TextureReplacerHelper replacer = prefab.EnsureComponent<TextureReplacerHelper>();
 
                 Renderer targetRenderer = null;
-                Transform rendererTransform = prefab.transform.Find(hierarchyPath);
+                Transform rendererTransform = prefab.transform.Find(configData.rendererHierarchyPath);
                 if(rendererTransform == null)
                 {
-                    Main.logger.LogError($"There is no object at the hierarchy path '{hierarchyPath}'!");
+                    Main.logger.LogError($"There is no object at the hierarchy path '{configData.rendererHierarchyPath}'!");
                     yield break;
                 }
                 rendererTransform.TryGetComponent<Renderer>(out targetRenderer);
