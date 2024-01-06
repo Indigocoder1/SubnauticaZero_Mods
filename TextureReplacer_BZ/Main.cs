@@ -13,7 +13,7 @@ namespace TextureReplacer
     {
         private const string myGUID = "com.Indigocoder.TextureReplacerZero";
         private const string pluginName = "Texture Replacer Zero";
-        private const string versionString = "1.0.1";
+        private const string versionString = "1.0.2";
 
         public static ManualLogSource logger;
         public static string AssetFolderPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets");
@@ -96,19 +96,21 @@ namespace TextureReplacer
         {
             { "_EmissionMap", TextureType.Emission},
             { "_EmissionColor", TextureType.LightColor},
+            { "_SpecInt", TextureType.Value }
         };
 
         public static Dictionary<TextureType, float> textureNameValueDefaults = new Dictionary<TextureType, float>
         {
             { TextureType.Emission, 0.6f },
             { TextureType.LightColor, 2.6f },
+            { TextureType.Value, 1.4f }
         };
 
         public enum TextureType
         {
             Emission,
             LightColor,
-            Values
+            Value
         }
     }
 }

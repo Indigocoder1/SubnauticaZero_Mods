@@ -93,11 +93,11 @@ namespace TextureReplacer
                                 logger.LogError($"Error parsing \"{configData.textureName}\"! Error is: \n{e.Message}");
                             }
                         }
-                        HandleCustomTextureNames(material, texture, extractedValue, customTextureNames[split[0]]);
+                        HandleCustomTextureNames(material, texture, extractedValue, split[0]);
                     }
                     else if(customTextureNames.ContainsKey(configData.textureName))
                     {
-                        HandleCustomTextureNames(material, texture, 0.6f, customTextureNames[configData.textureName]);
+                        HandleCustomTextureNames(material, texture, 0.6f, configData.textureName);
                     }
                     else
                     {
@@ -109,8 +109,9 @@ namespace TextureReplacer
             }
         }
 
-        private void HandleCustomTextureNames(Material material, Texture2D texture, float extractedValue, TextureType type)
+        private void HandleCustomTextureNames(Material material, Texture2D texture, float extractedValue, string key)
         {
+            TextureType type = Main.customTextureNames[key];
             switch (type)
             {
                 case TextureType.Emission:
@@ -139,6 +140,9 @@ namespace TextureReplacer
                     {
                         material.SetColor("_EmissionColor", averageColor);
                     }
+                    break;
+                case TextureType.Value:
+                    material.SetFloat(key, extractedValue);
                     break;
             }
         }
